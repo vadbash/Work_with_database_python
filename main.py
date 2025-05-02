@@ -1,13 +1,15 @@
 import mysql.connector
+from config import host, db_name, db_username, db_password, auth_plugin
 
-connection = mysql.connector.connect(host="localhost",
-                                    database="homework",
-                                    user="vadim",
-                                    password="vadim")
+connection = mysql.connector.connect(host=host,
+                                    database=db_name,
+                                    user=db_username,
+                                    password=db_password,
+                                    auth_plugin=auth_plugin)
 
 cursor=connection.cursor()
 
-#Parametry dla logina v database
+#Login
 
 def login():
 
@@ -31,7 +33,7 @@ def login():
     else:
         print("Login successful, HI")
 
-#Parametry dla reestracii v database
+#Reg form 
 
 def formreg():
 
@@ -57,7 +59,7 @@ def formreg():
     else:
         print('User with such name is already registered, try one more time later')
 
-#Zapyt na reestraciu chi login
+#Login or Reg
 
 typing = input("Do you want registration or login into account (R or L): ")
 if typing == 'R':
@@ -65,7 +67,6 @@ if typing == 'R':
 elif typing == 'L':
     login()
 
-#Perevirka na puste znachenna
 
 if typing == '' or typing == ' ':
     print("You are not typing anything, try one more time later")
